@@ -1,0 +1,18 @@
+.form-container {
+  display: table;
+  margin: auto;
+  width: 350px;
+}
+
+.add-form-control {
+  display: block;
+  overflow: hidden;
+  /* width: 100%; */
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+label {
+  float: left;
+  margin-right: 20px;
+}
