@@ -69,13 +69,16 @@ const Formulario = () => {
             type='text'>
           </input>
           <label>Categoria</label>
-          <input
+          <datalist
             className='add-form-control'
             placeholder='seleccionar'
             name="Categoria"
             onChange={(e) => handleChange(e)}
             type='text'>
-          </input>
+            <option value="Comercial" />
+            <option value="Residencial" />
+            <option value="Mixta" />
+          </datalist>
           <label>Coordenadas</label>
           <input
             className='add-form-control'

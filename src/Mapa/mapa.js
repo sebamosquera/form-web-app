@@ -14,9 +14,53 @@ loadModules(['esri/views/MapView', 'esri/WebMap'])
     // the styles, script, and modules have all been loaded (in that order)
   });
 
+const addMarker = (event) => {
+  console.log("hola");
+}
 
-const Mapa = () => {
-  const [ref]  = useWebMap('e691172598f04ea8881cd2a4adaa45ba');
+const Mapa = ({ /*onClick*/ }) => {
+  const latitude=-34;
+  const longitude=-58;
+
+  const geometry = {
+    type: "point",
+    latitude,
+    longitude
+  };
+
+  var symbol = {
+    type: "simple-marker",
+    color: [226, 119, 40],
+  };
+
+
+  const map = {
+    basemap: "streets",
+    ground: "world-elevation"
+  };
+
+  const options = {
+    view: {
+      center: [longitude, latitude],
+      // center: [15, 65],
+      zoom: 4
+    }
+  };
+
+  const [ref, view]  = useMap(map, options);
+
+  useGraphic(view, { geometry, symbol });
+
+  view.on("double-click", (event) => {
+    addMarker(event);
+    // The event object contains the mapPoint and the screen coordinates of the location
+    // that was clicked.
+    console.log("screen point", event.x, event.y);
+    console.log("map point", event.mapPoint);
+  });
+
+  // useEvent(view, "click", onClick);
+
 
   return (<div style={{ width: 400, height: 400 }} ref={ref}></div>);
 }
